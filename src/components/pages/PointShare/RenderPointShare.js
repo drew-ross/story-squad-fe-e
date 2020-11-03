@@ -22,9 +22,9 @@ const PointShare = props => {
   const { authState } = useOktaAuth();
 
   const formSubmit = () => {
-    if (totalPoints < 0) {
+    if (totalPoints > 0) {
       notification.error({
-        message: 'You may only allocate 100 points!',
+        message: 'You still have points remaining!',
       });
       return;
     }
