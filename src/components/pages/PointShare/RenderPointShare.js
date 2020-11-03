@@ -8,13 +8,14 @@ import { submitPoints } from '../../../api/index';
 import { SubmissionViewerModal } from '../../common';
 
 const PointShare = props => {
-  const [totalPoints, setTotalPoints] = useState(100);
-  const [storyOnePoints, setStoryOnePoints] = useState(0);
-  const [storyTwoPoints, setStoryTwoPoints] = useState(0);
-  const [illustrationOnePoints, setIllustrationOnePoints] = useState(0);
-  const [illustrationTwoPoints, setIllustrationTwoPoints] = useState(0);
+  const [totalPoints, setTotalPoints] = useState(60);
+  const [points, setPoints] = useState({
+    storyOne: 10,
+    storyTwo: 10,
+    drawingOne: 10,
+    drawingTwo: 10,
+  });
   const [teamPoints, setTeamPoints] = useState(null);
-
   const [modalContent, setModalContent] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -29,14 +30,14 @@ const PointShare = props => {
     }
     setTeamPoints([
       {
-        WritingPoints: storyOnePoints,
-        DrawingPoints: illustrationOnePoints,
+        WritingPoints: points.storyOne,
+        DrawingPoints: points.drawingOne,
         MemberID: props.child.memberId,
         SubmissionID: props.team.child1.SubmissionID,
       },
       {
-        WritingPoints: storyTwoPoints,
-        DrawingPoints: illustrationTwoPoints,
+        WritingPoints: points.storyTwo,
+        DrawingPoints: points.drawingTwo,
         MemberID: props.child.memberId,
         SubmissionID: props.team.child2.SubmissionID,
       },
@@ -49,9 +50,44 @@ const PointShare = props => {
     }
   }, [teamPoints, authState]);
 
+  useEffect(() => {
+    setTotalPoints(100 - calculateInputSum());
+  }, [points]);
+
   const openModal = content => {
     setModalContent(content);
     setShowModal(true);
+  };
+
+  const calculateMaxInput = inputKey => {
+    let sum = 0;
+    for (const [key, value] of Object.entries(points)) {
+      if (key !== inputKey) {
+        sum += value;
+      }
+    }
+    return 100 - sum;
+  };
+
+  const calculateInputSum = () => {
+    let sum = 0;
+    for (const [key, value] of Object.entries(points)) {
+      sum += value;
+    }
+    return sum;
+  };
+
+  const handleChanges = (value, inputKey) => {
+    if (value < 10) {
+      value = 10;
+    }
+    if (value > calculateMaxInput(inputKey)) {
+      value = calculateMaxInput(inputKey);
+    }
+    setPoints({
+      ...points,
+      [inputKey]: value,
+    });
   };
 
   return (
@@ -99,19 +135,11 @@ const PointShare = props => {
                   }
                 />
                 <InputNumber
-                  value={storyOnePoints}
-                  min={0}
+                  value={points.storyOne}
+                  min={10}
+                  max={calculateMaxInput('storyOne')}
                   step={5}
-                  onChange={value => {
-                    setStoryOnePoints(value);
-                    setTotalPoints(
-                      100 -
-                        (value +
-                          storyTwoPoints +
-                          illustrationOnePoints +
-                          illustrationTwoPoints)
-                    );
-                  }}
+                  onChange={value => handleChanges(value, 'storyOne')}
                 />
               </div>
               <div className="submission-container">
@@ -122,19 +150,11 @@ const PointShare = props => {
                   onClick={() => openModal(props.team.child1.Pages)}
                 />
                 <InputNumber
-                  value={illustrationOnePoints}
-                  min={0}
+                  value={points.drawingOne}
+                  min={10}
+                  max={calculateMaxInput('drawingOne')}
                   step={5}
-                  onChange={value => {
-                    setIllustrationOnePoints(value);
-                    setTotalPoints(
-                      100 -
-                        (value +
-                          storyTwoPoints +
-                          storyOnePoints +
-                          illustrationTwoPoints)
-                    );
-                  }}
+                  onChange={value => handleChanges(value, 'drawingOne')}
                 />
               </div>
             </Row>
@@ -149,19 +169,11 @@ const PointShare = props => {
                   }
                 />
                 <InputNumber
-                  value={storyTwoPoints}
-                  min={0}
+                  value={points.storyTwo}
+                  min={10}
+                  max={calculateMaxInput('storyTwo')}
                   step={5}
-                  onChange={value => {
-                    setStoryTwoPoints(value);
-                    setTotalPoints(
-                      100 -
-                        (value +
-                          storyOnePoints +
-                          illustrationOnePoints +
-                          illustrationTwoPoints)
-                    );
-                  }}
+                  onChange={value => handleChanges(value, 'storyTwo')}
                 />
               </div>
               <div className="submission-container">
@@ -172,19 +184,11 @@ const PointShare = props => {
                   onClick={() => openModal(props.team.child2.Pages)}
                 />
                 <InputNumber
-                  value={illustrationTwoPoints}
-                  min={0}
+                  value={points.drawingTwo}
+                  min={10}
+                  max={calculateMaxInput('drawingTwo')}
                   step={5}
-                  onChange={value => {
-                    setIllustrationTwoPoints(value);
-                    setTotalPoints(
-                      100 -
-                        (value +
-                          storyTwoPoints +
-                          illustrationOnePoints +
-                          storyOnePoints)
-                    );
-                  }}
+                  onChange={value => handleChanges(value, 'drawingTwo')}
                 />
               </div>
             </Row>
