@@ -52,6 +52,7 @@ const PointShare = props => {
 
   useEffect(() => {
     setTotalPoints(100 - calculateInputSum());
+    // eslint-disable-next-line
   }, [points]);
 
   const openModal = content => {
@@ -71,7 +72,7 @@ const PointShare = props => {
 
   const calculateInputSum = () => {
     let sum = 0;
-    for (const [key, value] of Object.entries(points)) {
+    for (const [, value] of Object.entries(points)) {
       sum += value;
     }
     return sum;
