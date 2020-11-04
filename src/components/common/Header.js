@@ -18,18 +18,31 @@ const ChildMenu = props => {
     props.clearUsers();
     push('/');
   };
+  //For easier testing, navigation items have been added. Remove when no longer needed.
   return (
     <Menu {...props}>
       <Menu.Item key="1">
         <Link to="/child/dashboard">Home</Link>
       </Menu.Item>
-      <Menu.Item key="2" disabled={true}>
+      <Menu.Item key="2">
+        <Link to="/moderation">(Testing) Moderation</Link>
+      </Menu.Item>
+      <Menu.Item key="3">
+        <Link to="/child/join">(Testing) Join Squad</Link>
+      </Menu.Item>
+      <Menu.Item key="4">
+        <Link to="/child/point-share">(Testing) Point Share</Link>
+      </Menu.Item>
+      <Menu.Item key="5">
+        <Link to="/child/match-up">(Testing) Matchup</Link>
+      </Menu.Item>
+      <Menu.Item key="6" disabled={true}>
         Help
       </Menu.Item>
-      <Menu.Item key="3" onClick={switchUsers}>
+      <Menu.Item key="7" onClick={switchUsers}>
         Change User
       </Menu.Item>
-      <Menu.Item key="4" onClick={() => authService.logout()}>
+      <Menu.Item key="8" onClick={() => authService.logout()}>
         Log Out
       </Menu.Item>
     </Menu>
