@@ -74,12 +74,12 @@ const RenderMissionControl = props => {
         modalVisible={modalVisible}
         handleCancel={() => {
           setModalVisible(false);
-        }}
-        handleOk={() => {
-          setModalVisible(false);
           if (hasRead && hasDrawn && hasWritten) {
             push('/child/dashboard');
           }
+        }}
+        handleOk={() => {
+          setModalVisible(false);
         }}
         instructions={instructionText}
         style={{ fontSize: '2rem' }}
