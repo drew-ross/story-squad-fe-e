@@ -77,6 +77,9 @@ const RenderMissionControl = props => {
         }}
         handleOk={() => {
           setModalVisible(false);
+          if (hasRead && hasDrawn && hasWritten) {
+            push('/child/dashboard');
+          }
         }}
         instructions={instructionText}
         style={{ fontSize: '2rem' }}

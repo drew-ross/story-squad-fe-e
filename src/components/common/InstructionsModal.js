@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button } from 'antd';
+import { getMissionControlText } from '../../utils/helpers';
 // import { useHistory } from 'react-router-dom';
 
 const InstructionsModal = props => {
@@ -11,6 +12,9 @@ const InstructionsModal = props => {
     showOkButton = false,
     handleCancel,
     handleOk,
+    hasRead,
+    hasDrawn,
+    hasWritten,
   } = props;
 
   // For when we're ready for checking the status of the weekly game

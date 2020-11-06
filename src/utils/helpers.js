@@ -19,7 +19,8 @@ export const modalInstructions = {
   drawingSub:
     'Once you finish your drawing, please take a picture of all your pages and upload them.  Tips: Take one photo per page. Find good Lighting and check your photo turns out clear. Make sure each page is straight and not cropped. After all pages are uploaded, click submit.',
   submissionComplete: 'Your Story has been submitted',
-  missionControl3: "It's time to join your squad! Click next to continue",
+  missionControl3:
+    'Both Submissions are complete. Excelent job! Come back later this week to see your new Squad.',
   sharePoints:
     "Ready Squad! Read your partner's story, view their drawing and share some points.",
 };
