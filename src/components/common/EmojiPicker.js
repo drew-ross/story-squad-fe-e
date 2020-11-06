@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from 'antd';
 
 //See https://unicode.org/emoji/charts/full-emoji-list.html for unicode equivalents
@@ -94,7 +94,15 @@ const Emoji = props => {
 };
 
 const EmojiPicker = props => {
+  const { getChildState } = props;
   const [selectedEmojis, setSelectedEmojis] = useState([]);
+
+  //If parent component wants to get this state, pass cb into props
+  useEffect(() => {
+    if (getChildState) {
+      getChildState(selectedEmojis);
+    }
+  }, [selectedEmojis, getChildState]);
 
   const handleAddEmoji = emoji => {
     if (selectedEmojis.length < 6 && !selectedEmojis.includes(emoji)) {
