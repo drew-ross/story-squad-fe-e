@@ -41,7 +41,7 @@ const RenderMissionControl = props => {
 
   useEffect(() => {
     setInstructionText(getMissionControlText(hasRead, hasDrawn, hasWritten));
-    setShowButton(!hasRead || (hasWritten && hasDrawn));
+    setShowButton(true);
   }, [hasRead, hasWritten, hasDrawn]);
 
   // Will be for when we are checking whether or not the child has completed a task
@@ -83,7 +83,6 @@ const RenderMissionControl = props => {
         }}
         instructions={instructionText}
         style={{ fontSize: '2rem' }}
-        showOkButton={showButton}
       />
       <div className="mission-container">
         <Row className="main-row">

@@ -37,11 +37,9 @@ const InstructionsModal = props => {
         closeIcon={null}
       >
         <p style={style}>{instructions}</p>
-        {showOkButton && (
-          <Button onClick={handleCancel} className="accept-button">
-            I Accept!!!
-          </Button>
-        )}
+        <Button onClick={handleCancel} className="accept-button">
+          I Accept!!!
+        </Button>
       </Modal>
     </>
   );

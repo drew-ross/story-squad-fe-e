@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import { Header } from '../../common';
 import { Row, Col } from 'antd';
 import { useHistory } from 'react-router-dom';
@@ -12,6 +12,11 @@ import trophy_room from '../../../assets/images/child_dashboard_images/trophy_ro
 const RenderChildDashboard = props => {
   const { push } = useHistory();
   const [modalVisible, setModalVisible] = useState(true);
+  const [showButton, setShowButton] = useState(true);
+
+  useEffect(() => {
+    setShowButton(true);
+  }, []);
 
   const handleAcceptMission = e => {
     push('/child/mission-control');
