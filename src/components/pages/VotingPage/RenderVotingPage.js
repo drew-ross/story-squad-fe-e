@@ -1,7 +1,6 @@
 import React from 'react';
-import { Header } from '../../common';
+import { Header, VotingForm, EmojiPicker } from '../../common';
 import { Row, Col, Card } from 'antd';
-import { VotingForm } from '../../common';
 
 const RenderVotingPage = props => {
   return (
@@ -19,6 +18,7 @@ const RenderVotingPage = props => {
                   alt="writing submission"
                 />
               </Card>
+              <EmojiPicker />
             </div>
           </Col>
 
@@ -32,7 +32,11 @@ const RenderVotingPage = props => {
                 />
               </Card>
             </div>
-            <VotingForm FaceoffID={props.faceoff.ID} MemberID={props.child.memberId}/>
+            <EmojiPicker />
+            <VotingForm
+              FaceoffID={props.faceoff.ID}
+              MemberID={props.child.memberId}
+            />
           </Col>
         </Row>
       </div>
