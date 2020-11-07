@@ -119,11 +119,13 @@ const EmojiPicker = props => {
   return (
     <div className="EmojiPicker">
       <Card title="Give Feedback" className="emoji-feedback-card">
-        {selectedEmojis.map(emoji => (
-          <Emoji emoji={emoji} handleClick={handleRemoveEmoji} />
-        ))}
+        <div>
+          {selectedEmojis.map(emoji => (
+            <Emoji emoji={emoji} handleClick={handleRemoveEmoji} />
+          ))}
+        </div>
       </Card>
-      <Card>
+      <Card className="emoji-selection-card">
         {emojiList.map(emoji => (
           <Emoji emoji={emoji} handleClick={handleAddEmoji} />
         ))}
