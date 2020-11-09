@@ -25,6 +25,12 @@ export const modalInstructions = {
     "Ready Squad! Read your partner's story, view their drawing and share some points.",
 };
 
+export const modalButtonText = {
+  accept: 'I Accept!!',
+  ok: 'OK',
+  nextPage: 'Next Page',
+};
+
 export const getMissionControlText = (hasRead, hasDrawn, hasWritten) => {
   if (!hasRead) {
     return modalInstructions.missionControl1;
@@ -32,6 +38,16 @@ export const getMissionControlText = (hasRead, hasDrawn, hasWritten) => {
     return modalInstructions.missionControl2;
   } else {
     return modalInstructions.missionControl3;
+  }
+};
+
+export const getMissionControlButtonText = (hasRead, hasDrawn, hasWritten) => {
+  if (!hasRead) {
+    return modalButtonText.accept;
+  } else if (hasRead && (!hasDrawn || !hasWritten)) {
+    return modalButtonText.ok;
+  } else {
+    return modalButtonText.nextPage;
   }
 };
 

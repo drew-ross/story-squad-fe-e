@@ -3,7 +3,7 @@ import { Header } from '../../common';
 import { Row, Col } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { InstructionsModal } from '../../common';
-import { modalInstructions } from '../../../utils/helpers';
+import { modalInstructions, modalButtonText } from '../../../utils/helpers';
 
 import adventure_passport from '../../../assets/images/child_dashboard_images/adventure_passport.svg';
 import change_your_avatar from '../../../assets/images/child_dashboard_images/change_your_avatar.svg';
@@ -42,6 +42,7 @@ const RenderChildDashboard = props => {
           setModalVisible(false);
         }}
         instructions={modalInstructions.childDash}
+        buttonText={modalButtonText.ok}
       />
       <div className="dash-container">
         <Row className="toprow">

@@ -12,9 +12,7 @@ const InstructionsModal = props => {
     showOkButton = false,
     handleCancel,
     handleOk,
-    hasRead,
-    hasDrawn,
-    hasWritten,
+    buttonText,
   } = props;
 
   // For when we're ready for checking the status of the weekly game
@@ -38,7 +36,7 @@ const InstructionsModal = props => {
       >
         <p style={style}>{instructions}</p>
         <Button onClick={handleCancel} className="accept-button">
-          I Accept!!!
+          {buttonText}
         </Button>
       </Modal>
     </>

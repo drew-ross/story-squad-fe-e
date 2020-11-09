@@ -4,7 +4,10 @@ import { Row, Col } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { InstructionsModal } from '../../common';
-import { getMissionControlText } from '../../../utils/helpers';
+import {
+  getMissionControlText,
+  getMissionControlButtonText,
+} from '../../../utils/helpers';
 import draw_icon from '../../../assets/icons/draw_icon.svg';
 import read_icon from '../../../assets/icons/read_icon.svg';
 import write_icon from '../../../assets/icons/write_icon.svg';
@@ -19,6 +22,7 @@ const RenderMissionControl = props => {
   const [instructionText, setInstructionText] = useState('');
   const [modalVisible, setModalVisible] = useState(true);
   const [showButton, setShowButton] = useState(false);
+  const [modalButton, setModalButton] = useState('');
   const { hasRead, hasWritten, hasDrawn } = props;
 
   const { push } = useHistory();
@@ -41,6 +45,7 @@ const RenderMissionControl = props => {
 
   useEffect(() => {
     setInstructionText(getMissionControlText(hasRead, hasDrawn, hasWritten));
+    setModalButton(getMissionControlButtonText(hasRead, hasDrawn, hasWritten));
     setShowButton(true);
   }, [hasRead, hasWritten, hasDrawn]);
 
@@ -83,6 +88,7 @@ const RenderMissionControl = props => {
         }}
         instructions={instructionText}
         style={{ fontSize: '2rem' }}
+        buttonText={modalButton}
       />
       <div className="mission-container">
         <Row className="main-row">
