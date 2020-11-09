@@ -8,6 +8,7 @@ import { postVotes } from '../../api';
 const VotingForm = props => {
   const { push } = useHistory();
   const { authState } = useOktaAuth();
+  const { subEmojis1, subEmojis2 } = props.subEmojis;
   const [value, setValue] = useState(1);
 
   const onChange = e => {
@@ -15,9 +16,11 @@ const VotingForm = props => {
   };
   const onFinish = () => {
     const body = {
-      "Vote": value, 
-      "MemberID": props.MemberID,
-      "FaceoffID": props.FaceoffID,
+      Vote: value,
+      MemberID: props.MemberID,
+      FaceoffID: props.FaceoffID,
+      subEmojis1: subEmojis1,
+      subEmojis2: subEmojis2,
     };
     postVotes(authState, body).then(res => {
       push('/child/match-up');
