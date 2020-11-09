@@ -39,6 +39,7 @@ const RenderVotingPage = props => {
             <VotingForm
               FaceoffID={props.faceoff.ID}
               MemberID={props.child.memberId}
+              subEmojis={{ subEmojis1, subEmojis2 }}
             />
           </Col>
         </Row>
