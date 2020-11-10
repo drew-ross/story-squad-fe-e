@@ -5,7 +5,7 @@ import { Header } from '../../common';
 import { UploadDocs } from '../../common/';
 import { postNewDrawingSub } from '../../../api/index';
 import { InstructionsModal } from '../../common/index';
-import { modalInstructions } from '../../../utils/helpers';
+import { modalInstructions, modalButtonText } from '../../../utils/helpers';
 import { tasks } from '../../../state/actions';
 import { useHistory } from 'react-router-dom';
 
@@ -13,12 +13,13 @@ export const RenderDrawingSub = props => {
   //Modal state
   const [modalVisible, setModalVisible] = useState(false);
   const [modalText, setModalText] = useState('');
-
+  const [modalButton, setModalButton] = useState('');
   const { push } = useHistory();
 
   const handleSubmit = () => {
     setModalVisible(true);
     setModalText(modalInstructions.submissionComplete);
+    setModalButton(modalButtonText.nextPage);
   };
   return (
     <>
@@ -36,6 +37,7 @@ export const RenderDrawingSub = props => {
         }}
         style={{ fontSize: '1.5rem' }}
         instructions={modalText || modalInstructions.drawingSub}
+        buttonText={modalButton || modalButtonText.ok}
       />
       <div className="writing-sub-container">
         <Row className="main-row">

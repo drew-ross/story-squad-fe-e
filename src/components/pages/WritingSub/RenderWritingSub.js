@@ -7,19 +7,21 @@ import { Header } from '../../common';
 import { UploadDocs } from '../../common/';
 import { postNewWritingSub } from '../../../api/index';
 import { InstructionsModal } from '../../common/index';
-import { modalInstructions } from '../../../utils/helpers';
+import { modalInstructions, modalButtonText } from '../../../utils/helpers';
 import { tasks } from '../../../state/actions';
 
 export const RenderWritingSub = props => {
   //Modal state
   const [modalVisible, setModalVisible] = useState(true);
   const [modalText, setModalText] = useState('');
+  const [modalButton, setModalButton] = useState('');
 
   const { push } = useHistory();
 
   const handleSubmit = () => {
     setModalVisible(true);
     setModalText(modalInstructions.submissionComplete);
+    setModalButton(modalButtonText.nextPage);
   };
 
   return (
@@ -37,6 +39,7 @@ export const RenderWritingSub = props => {
           setModalVisible(false);
         }}
         instructions={modalText || modalInstructions.writingSub}
+        buttonText={modalButton || modalButtonText.ok}
         style={{ fontSize: '1.5rem' }}
       />
       <div className="writing-sub-container">
