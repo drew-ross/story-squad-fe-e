@@ -9,6 +9,7 @@ import UploadDocs from './UploadDocs';
 import InstructionsModal from './InstructionsModal';
 import VotingForm from './VotingForm';
 import SubmissionViewerModal from './SubmissionViewerModal';
+import EmojiPicker from './EmojiPicker';
 // notice we're building out a 'package' of reusables here and exporting them as an object of component properties.
 // to use this, simply `import {foo, bar, baz} from '~/path/to/common';`
 export {
@@ -23,4 +24,5 @@ export {
   InstructionsModal,
   VotingForm,
   SubmissionViewerModal,
+  EmojiPicker,
 };

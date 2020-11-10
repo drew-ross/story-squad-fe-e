@@ -1,9 +1,11 @@
-import React from 'react';
-import { Header } from '../../common';
+import React, { useState } from 'react';
+import { Header, VotingForm, EmojiPicker } from '../../common';
 import { Row, Col, Card } from 'antd';
-import { VotingForm } from '../../common';
 
 const RenderVotingPage = props => {
+  const [subEmojis1, setSubEmojis1] = useState([]);
+  const [subEmojis2, setSubEmojis2] = useState([]);
+
   return (
     <>
       <Header title="VOTE FOR YOUR FAVORITE STORY" />
@@ -19,6 +21,7 @@ const RenderVotingPage = props => {
                   alt="writing submission"
                 />
               </Card>
+              <EmojiPicker getChildState={setSubEmojis1} />
             </div>
           </Col>
 
@@ -32,7 +35,12 @@ const RenderVotingPage = props => {
                 />
               </Card>
             </div>
-            <VotingForm FaceoffID={props.faceoff.ID} MemberID={props.child.memberId}/>
+            <EmojiPicker getChildState={setSubEmojis2} />
+            <VotingForm
+              FaceoffID={props.faceoff.ID}
+              MemberID={props.child.memberId}
+              subEmojis={{ subEmojis1, subEmojis2 }}
+            />
           </Col>
         </Row>
       </div>
