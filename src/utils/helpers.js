@@ -22,7 +22,7 @@ export const modalInstructions = {
   missionControl3:
     'Both Submissions are complete. Excelent job! Come back later this week to see your new Squad.',
   sharePoints:
-    "Ready Squad! Read your partner's story, view their drawing and share some points.",
+    "Ready Squad! Read your partner's story, view their drawing and share some points. Accept to Continue.",
 };
 
 export const modalButtonText = {
