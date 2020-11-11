@@ -18,7 +18,7 @@ const EmojiFeedback = props => {
     setModalVisible(true);
   };
 
-  // get an object with count from emoji string to display as separate components
+  // get an array of objects {emoji: count} from string to render EmojiCard components
   useEffect(() => {
     console.log(props.emojis);
     const emojiArr = [...props.emojis];
