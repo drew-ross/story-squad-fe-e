@@ -99,8 +99,9 @@ const EmojiPicker = props => {
 
   //If parent component wants to get this state, pass cb into props
   useEffect(() => {
+    const selectedEmojisString = selectedEmojis.join('');
     if (getChildState) {
-      getChildState(selectedEmojis);
+      getChildState(selectedEmojisString);
     }
   }, [selectedEmojis, getChildState]);
 

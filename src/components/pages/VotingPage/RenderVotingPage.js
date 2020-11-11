@@ -3,8 +3,8 @@ import { Header, VotingForm, EmojiPicker } from '../../common';
 import { Row, Col, Card } from 'antd';
 
 const RenderVotingPage = props => {
-  const [subEmojis1, setSubEmojis1] = useState([]);
-  const [subEmojis2, setSubEmojis2] = useState([]);
+  const [subEmojis1, setSubEmojis1] = useState('');
+  const [subEmojis2, setSubEmojis2] = useState('');
 
   return (
     <>
