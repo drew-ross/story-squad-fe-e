@@ -39,13 +39,13 @@ const EmojiFeedback = props => {
 
   return (
     <div className="EmojiFeedback">
-      <button onClick={onClick}>Feedback</button>
+      <button onClick={onClick}></button>
       <Modal
         visible={modalVisible}
         onCancel={() => setModalVisible(false)}
         onOk={() => setModalVisible(false)}
         footer={null}
-        title={'Feedback from others'}
+        title={'Feedback about your submission'}
       >
         <div className="modal-content">
           {emojis.length &&
