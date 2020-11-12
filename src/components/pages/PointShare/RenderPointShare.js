@@ -4,6 +4,8 @@ import { Header } from '../../common';
 import { Row, Col, InputNumber, Button, notification } from 'antd';
 import { connect } from 'react-redux';
 import { submitPoints } from '../../../api/index';
+import { InstructionsModal } from '../../common';
+import { modalInstructions, modalButtonText } from '../../../utils/helpers';
 
 import { SubmissionViewerModal } from '../../common';
 
@@ -18,6 +20,7 @@ const PointShare = props => {
   const [teamPoints, setTeamPoints] = useState(null);
   const [modalContent, setModalContent] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [modalVisible, setModalVisible] = useState(true);
 
   const { authState } = useOktaAuth();
 
@@ -93,6 +96,18 @@ const PointShare = props => {
 
   return (
     <>
+      <InstructionsModal
+        modalVisible={modalVisible}
+        handleCancel={() => {
+          setModalVisible(false);
+        }}
+        handleOk={() => {
+          setModalVisible(false);
+        }}
+        instructions={modalInstructions.sharePoints}
+        buttonText={modalButtonText.accept}
+      />
+
       {/* Header requires countDown={true}  */}
       {showModal && (
         <SubmissionViewerModal
