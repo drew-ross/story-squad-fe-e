@@ -14,7 +14,6 @@ function MatchUpContainer({ LoadingComponent, ...props }) {
   const [memoAuthService] = useMemo(() => [authService], []);
   // const [faceoffs, setFaceoffs] = useState(null);
 
-
   useEffect(() => {
     let isSubscribed = true;
 
@@ -36,15 +35,17 @@ function MatchUpContainer({ LoadingComponent, ...props }) {
 
   useEffect(() => {
     getChildSquad(authState, props.child.id).then(squad => {
-      getChildFaceoffs(authState, squad.ID).then(allFaceoffs => {
-        props.setMemberId(squad);
-        props.setSquadFaceoffs(allFaceoffs);
-      });
+      getChildFaceoffs(authState, squad.ID, props.child.id).then(
+        allFaceoffs => {
+          props.setMemberId(squad);
+          props.setSquadFaceoffs(allFaceoffs);
+        }
+      );
     });
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [authState]);
 
-   return (
+  return (
     <>
       {authState.isAuthenticated && !userInfo && (
         <LoadingComponent message="Loading..." />
