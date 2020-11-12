@@ -4,8 +4,8 @@ import { Modal } from 'antd';
 const EmojiCard = ({ emoji }) => {
   return (
     <div className="EmojiCard">
-      <p>{emoji[0]}</p>
-      <p>{emoji[1]}</p>
+      <span>{emoji[0]}</span>
+      <span>{emoji[1]}</span>
     </div>
   );
 };
@@ -47,7 +47,10 @@ const EmojiFeedback = props => {
         footer={null}
         title={'Feedback from others'}
       >
-        {emojis.length && emojis.map(emoji => <EmojiCard emoji={emoji} />)}
+        <div className="modal-content">
+          {emojis.length &&
+            emojis.map((emoji, i) => <EmojiCard key={i} emoji={emoji} />)}
+        </div>
       </Modal>
     </div>
   );
