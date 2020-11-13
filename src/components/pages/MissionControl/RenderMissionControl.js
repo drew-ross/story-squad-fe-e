@@ -21,7 +21,6 @@ const RenderMissionControl = props => {
   //modal state
   const [instructionText, setInstructionText] = useState('');
   const [modalVisible, setModalVisible] = useState(true);
-  const [showButton, setShowButton] = useState(false);
   const [modalButton, setModalButton] = useState('');
   const { hasRead, hasWritten, hasDrawn } = props;
 
@@ -46,7 +45,6 @@ const RenderMissionControl = props => {
   useEffect(() => {
     setInstructionText(getMissionControlText(hasRead, hasDrawn, hasWritten));
     setModalButton(getMissionControlButtonText(hasRead, hasDrawn, hasWritten));
-    setShowButton(true);
   }, [hasRead, hasWritten, hasDrawn]);
 
   // Will be for when we are checking whether or not the child has completed a task

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Modal, Button } from 'antd';
-import { getMissionControlText } from '../../utils/helpers';
 // import { useHistory } from 'react-router-dom';
 
 const InstructionsModal = props => {
@@ -9,7 +8,6 @@ const InstructionsModal = props => {
     modalVisible,
     style,
     instructions,
-    showOkButton = false,
     handleCancel,
     handleOk,
     buttonText,
