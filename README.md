@@ -16,9 +16,9 @@ You can find the deployed project at: [AWS Amplify](https://e.storysquad.dev/)
 <br>
 [UX Design](https://www.figma.com/file/WaHXdLK2NASoFWYVMZLVNt/Story_Squad?node-id=962%3A211)
 <br>
-[Trello Board](https://trello.com/b/IUMvKKNf/story-squad-b-trevor)
+[Trello Board](https://trello.com/b/8VfvQok7/story-squad-wesley)
 <br>
-[Architecture Layout](https://whimsical.com/428nXLpzshbbb32xF67Lu4)
+[Architecture Layout](https://whimsical.com/architecture-layout-6LhuvFNby9EwqCTiDPDVTj)
 <br>
 
 ---
