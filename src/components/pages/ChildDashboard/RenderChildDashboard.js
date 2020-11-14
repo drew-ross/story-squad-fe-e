@@ -10,8 +10,6 @@ import adventure_passport from '../../../assets/images/child_dashboard_images/ad
 import change_your_avatar from '../../../assets/images/child_dashboard_images/change_your_avatar.svg';
 import trophy_room from '../../../assets/images/child_dashboard_images/trophy_room.svg';
 
-import { tasks } from '../../../state/actions';
-
 const RenderChildDashboard = props => {
   const { push } = useHistory();
   const [modalVisible, setModalVisible] = useState(true);
