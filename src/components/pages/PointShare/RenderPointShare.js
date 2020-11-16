@@ -53,8 +53,11 @@ const PointShare = props => {
     }
   }, [teamPoints, authState]);
 
+  // Change points remaining display if inputs are valid
   useEffect(() => {
-    setTotalPoints(100 - calculateInputSum());
+    if (typeof calculateInputSum() === 'number') {
+      setTotalPoints(100 - calculateInputSum());
+    }
     // eslint-disable-next-line
   }, [points]);
 
