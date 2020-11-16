@@ -10,6 +10,10 @@ export function getBase64(file) {
 export const modalInstructions = {
   childDash:
     'Welcome to Story Squad. Accept your mission to start an adventure!',
+  childDash2:
+    'Welcome back! Go ahead and click the "Join Squad" to see if you have been assigned with a partner yet.',
+  childDash3:
+    'Welcome back! Voting time is happening right now. Go ahead and vote for your favorite story submissions!',
   missionControl1:
     'Welcome to Story Squad! To begin your journey click the "READ" icon to start the story! Are you ready to accept the challenge?',
   missionControl2:
@@ -38,6 +42,14 @@ export const getMissionControlText = (hasRead, hasDrawn, hasWritten) => {
     return modalInstructions.missionControl2;
   } else {
     return modalInstructions.missionControl3;
+  }
+};
+
+export const getChildDashboardText = (hasRead, hasDrawn, hasWritten) => {
+  if (hasRead && hasDrawn && hasWritten) {
+    return modalInstructions.childDash2;
+  } else {
+    return modalInstructions.childDash;
   }
 };
 
