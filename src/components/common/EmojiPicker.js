@@ -83,6 +83,9 @@ const emojiList = [
   '😤',
 ];
 
+//Use this to set the maximum number of emojis a user can submit
+const emojiLimit = 6;
+
 const Emoji = props => {
   const { emoji, handleClick } = props;
 
@@ -97,16 +100,16 @@ const EmojiPicker = props => {
   const { getChildState } = props;
   const [selectedEmojis, setSelectedEmojis] = useState([]);
 
-  //If parent component wants to get this state, pass cb into props
+  //If parent component wants to get this state, pass cb into props. Converts Array to String of emojis to match backend data type.
   useEffect(() => {
-    const selectedEmojisString = selectedEmojis.join('');
+    const selectedEmojisString = selectedEmojis.join('') + ',';
     if (getChildState) {
       getChildState(selectedEmojisString);
     }
   }, [selectedEmojis, getChildState]);
 
   const handleAddEmoji = emoji => {
-    if (selectedEmojis.length < 6 && !selectedEmojis.includes(emoji)) {
+    if (selectedEmojis.length < emojiLimit && !selectedEmojis.includes(emoji)) {
       setSelectedEmojis([...selectedEmojis, emoji]);
     }
   };
