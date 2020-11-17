@@ -4,7 +4,7 @@ import { Modal } from 'antd';
 const EmojiCard = ({ emojiRow }) => {
   return (
     <div className="EmojiCard">
-      <span>{emojiRow}</span>
+      <span className="emoji-row">{emojiRow}</span>
     </div>
   );
 };
