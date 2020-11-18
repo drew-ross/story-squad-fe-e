@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'antd';
 
-const EmojiCard = ({ emoji }) => {
+const EmojiCard = ({ emojiRow }) => {
   return (
     <div className="EmojiCard">
-      <span>{emoji[0]}</span>
-      <span>{emoji[1]}</span>
+      <span className="emoji-row">{emojiRow}</span>
     </div>
   );
 };
@@ -18,23 +17,11 @@ const EmojiFeedback = props => {
     setModalVisible(true);
   };
 
-  // get an array of objects {emoji: count} from string to render EmojiCard components
+  //Parse feedback into array of multiple submissions for rendering EmojiCards
   useEffect(() => {
-    console.log(props.emojis);
-    const emojiArr = [...props.emojis];
-    const emojiObj = {};
-    const output = [];
-    emojiArr.forEach(emoji => {
-      if (!(emoji in emojiObj)) {
-        emojiObj[emoji] = 0;
-      }
-      emojiObj[emoji] += 1;
-    });
-    for (const emoji in emojiObj) {
-      output.push([emoji, emojiObj[emoji]]);
-    }
-    setEmojis(output);
-    console.log(output);
+    const emojiArr = props.emojis.split(',').filter(string => string);
+    setEmojis(emojiArr);
+    console.log(emojiArr);
   }, [props]);
 
   return (
@@ -49,7 +36,9 @@ const EmojiFeedback = props => {
       >
         <div className="modal-content">
           {emojis.length &&
-            emojis.map((emoji, i) => <EmojiCard key={i} emoji={emoji} />)}
+            emojis.map((emojiRow, i) => (
+              <EmojiCard key={i} emojiRow={emojiRow} />
+            ))}
         </div>
       </Modal>
     </div>
